@@ -12,4 +12,20 @@
  *
  *= require_tree .
  *= require_self
+//= require foundation_and_overrides
+
  */
+
+@import "foundation_and_overrides";
+/* Add imports of custom sass/scss files here */
+
+.top-bar {
+  a:hover {
+    background-color: $light-gray;
+  }
+  margin-bottom: 1rem;
+}
+
+.footer {
+  background-color: $dark-gray;
+}

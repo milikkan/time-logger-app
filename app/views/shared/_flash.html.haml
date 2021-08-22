@@ -1,0 +1,12 @@
+- if flash[:notice]
+  .cell
+    .callout.primary{'data-closable' => ''}
+      = flash[:notice]
+      %button.close-button{'aria-label' => 'Dismiss alert', 'data-close' => ''}
+        %span{'aria-hidden' => 'true'} &times;
+- if flash[:error]
+  .cell
+    .callout.alert{'data-closable' => ''}
+      = flash[:error]
+      %button.close-button{'aria-label' => 'Dismiss alert', 'data-close' => ''}
+        %span{'aria-hidden' => 'true'} &times;

@@ -1,0 +1,19 @@
+= form_with(model: time_entry) do |form|
+  - if time_entry.errors.any?
+    #error_explanation
+      %h2= pluralize(time_entry.errors.count, "error") + "prohibited this time_entry from being saved:"
+      - time_entry.errors.each do |error|
+        = error.full_message
+  .grid-container
+    .grid-x.grid-padding-x
+      .medium-6.cell
+        = form.label :start
+        = form.text_field :start, class: 'datetimepicker'
+      .medium-6.cell
+        = form.label :end
+        = form.text_field :end, class: 'datetimepicker'
+      .cell
+        = form.label :comment
+        = form.text_field :comment
+      .cell
+        = form.submit

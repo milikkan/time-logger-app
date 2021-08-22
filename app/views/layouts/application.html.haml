@@ -1,0 +1,24 @@
+!!! 5
+%html{ :lang => "en" }
+  %head
+    %meta{ :charset => "utf-8" }
+
+    %meta{ :name => "viewport", :content => "width=device-width, initial-scale=1.0" }
+
+    %title= content_for?(:title) ? yield(:title) : "Untitled"
+
+    = stylesheet_link_tag "application"
+    = javascript_include_tag "application"
+    = csrf_meta_tag
+
+  %body
+    .grid-y.grid-frame
+      .cell.shrink.header
+        = render partial: "shared/topbar"
+      .cell.auto.cell-block
+        .grid-container
+          .grid-x.grid-padding-x
+            = render partial: "shared/flash"
+            = yield
+      .cell.shrink.footer
+        = render partial: "shared/footer"

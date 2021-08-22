@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  comment: MyString
+  start: 2021-08-19 10:47:22
+  end: 2021-08-19 10:47:22
+
+two:
+  comment: MyString
+  start: 2021-08-19 10:47:22
+  end: 2021-08-19 10:47:22
