@@ -1,0 +1,14 @@
+.cell
+  %h1 Sign In
+.cell
+  = form_with url: sign_in_path do |form|
+    -# if @user.errors.any?
+      .callout.alert
+        %h5 Please correct errors: 
+        - @user.errors.each do |error|
+          %p= error.full_message 
+    = form.label :email
+    = form.text_field :email, placeholder: "john@example.com"
+    = form.label :password
+    = form.password_field :password, placeholder: "password"
+    = form.submit "Sign In", class: 'button'

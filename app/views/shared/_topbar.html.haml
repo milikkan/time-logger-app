@@ -8,5 +8,13 @@
       %li= link_to "Admin Reports"
   .top-bar-right
     %ul.menu
-      %li
-        %button.button Log In
+      - if Current.user
+        %li
+          %span= "Logged in as #{Current.user.email}"
+        %li
+          = button_to "Log out", logout_path, method: :delete, class: "button"
+      - else
+        %li
+          = link_to "Sign Up", sign_up_path, class: "button"
+        %li
+          = link_to "Log In", sign_in_path, class: "button"
