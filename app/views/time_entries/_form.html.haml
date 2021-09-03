@@ -8,10 +8,10 @@
     .grid-x.grid-padding-x
       .medium-6.cell
         = form.label :start
-        = form.text_field :start, class: 'datetimepicker'
+        = form.text_field :start, class: 'datetimepicker', autocomplete: 'off'
       .medium-6.cell
         = form.label :end
-        = form.text_field :end, class: 'datetimepicker'
+        = form.text_field :end, class: 'datetimepicker', autocomplete: 'off'
       .cell
         = form.label :comment
         = form.text_field :comment

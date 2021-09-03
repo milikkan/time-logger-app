@@ -1,9 +1,14 @@
 class TimeEntriesController < ApplicationController
+  include Redirectable
   before_action :set_time_entry, only: %i[ show edit update destroy ]
+  before_action :redirect_not_loggedin_users
+  rescue_from ActiveRecord::RecordNotFound, with: :invalid_time_entry
 
   # GET /time_entries or /time_entries.json
   def index
-    @time_entries = TimeEntry.all
+    #@time_entries = TimeEntry.all
+    @time_entries = Current.user.time_entries.all
+    #render plain: Current.user.inspect
   end
 
   # GET /time_entries/1 or /time_entries/1.json
@@ -21,7 +26,7 @@ class TimeEntriesController < ApplicationController
 
   # POST /time_entries or /time_entries.json
   def create
-    @time_entry = TimeEntry.new(time_entry_params)
+    @time_entry = Current.user.time_entries.build(time_entry_params)
 
     respond_to do |format|
       if @time_entry.save
@@ -65,5 +70,12 @@ class TimeEntriesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def time_entry_params
       params.require(:time_entry).permit(:comment, :start, :end)
+    end
+
+
+    def invalid_time_entry
+      logger.error "Attempt to access invalid time entry #{params[:id]}"
+      notice_text = Current.user.present? ? 'Invalid time entry requested' : 'You need to login to access time entries'
+      redirect_to time_entries_path, notice: notice_text
     end
 end
