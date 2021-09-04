@@ -1,13 +1,19 @@
 .top-bar
   .top-bar-left
-    %ul.menu
+    %ul.menu.dropdown{"data-dropdown-menu" => ""}
       %li.fa.fa-hourglass.brand-icon.fa-2x
       %li= link_to "TIME LOGGER", root_path, class: "menu-text"
       - if Current.user
         %li= link_to "My Time Logs", time_entries_path
-        %li= link_to "Categories"
+        %li= link_to "New Entry", new_time_entry_path
         - if Current.user.is_admin
-          %li= link_to "Reports"
+          %li
+            = link_to "Reports"
+            %ul.menu.vertical
+              %li= link_to "User Time Logs"
+              %li= link_to "User Total Hours"
+              %li= link_to "Category Time Logs"
+          %li= link_to "Categories"
           %li= link_to "Users"
   .top-bar-right
     %ul.menu

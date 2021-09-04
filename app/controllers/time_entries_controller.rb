@@ -13,6 +13,7 @@ class TimeEntriesController < ApplicationController
 
   # GET /time_entries/1 or /time_entries/1.json
   def show
+    redirect_to time_entries_path
   end
 
   # GET /time_entries/new

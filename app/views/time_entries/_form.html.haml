@@ -16,4 +16,5 @@
         = form.label :comment
         = form.text_field :comment
       .cell
-        = form.submit
+        = form.submit "Save", class: "button"
+        = link_to "Cancel", time_entries_path, class: "button warning"

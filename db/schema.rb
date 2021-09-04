@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2021_09_03_110845) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "time_entries", force: :cascade do |t|
     t.string "comment"
     t.datetime "start"
