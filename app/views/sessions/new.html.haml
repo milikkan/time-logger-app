@@ -1,5 +1,5 @@
 .cell
-  %h1 Sign In
+  %h1 Log In
 .cell
   = form_with url: sign_in_path do |form|
     -# if @user.errors.any?
@@ -11,4 +11,4 @@
     = form.text_field :email, placeholder: "john@example.com"
     = form.label :password
     = form.password_field :password, placeholder: "password"
-    = form.submit "Sign In", class: 'button'
+    = form.submit "Log In", class: "button"

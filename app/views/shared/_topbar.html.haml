@@ -1,6 +1,7 @@
 .top-bar
   .top-bar-left
     %ul.menu
+      %li.fa.fa-hourglass.brand-icon.fa-2x
       %li= link_to "TIME LOGGER", root_path, class: "menu-text"
       - if Current.user
         %li= link_to "My Time Logs", time_entries_path
@@ -14,9 +15,9 @@
         %li.menu-text
           = "Logged in as #{generate_title(Current.user)}"
         %li
-          = button_to "Log out", logout_path, method: :delete, class: "button"
+          = button_to "Log out", logout_path, method: :delete, class: "hollow button small"
       - else
         %li
-          = link_to "Sign Up", sign_up_path
+          = link_to "Log In", sign_in_path, class: "button small"
         %li
-          = link_to "Log In", sign_in_path
+          = link_to "Sign Up", sign_up_path, class: "button success small"
