@@ -6,9 +6,8 @@ class TimeEntriesController < ApplicationController
 
   # GET /time_entries or /time_entries.json
   def index
-    #@time_entries = TimeEntry.all
     @time_entries = Current.user.time_entries.all
-    #render plain: Current.user.inspect
+    #render plain: @categories.inspect
   end
 
   # GET /time_entries/new
@@ -26,7 +25,7 @@ class TimeEntriesController < ApplicationController
 
     respond_to do |format|
       if @time_entry.save
-        format.html { redirect_to @time_entry, notice: "Time entry was successfully created." }
+        format.html { redirect_to time_entries_path, notice: "Time entry was successfully created." }
         format.json { render :show, status: :created, location: @time_entry }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -39,7 +38,7 @@ class TimeEntriesController < ApplicationController
   def update
     respond_to do |format|
       if @time_entry.update(time_entry_params)
-        format.html { redirect_to @time_entry, notice: "Time entry was successfully updated." }
+        format.html { redirect_to time_entries_path, notice: "Time entry was successfully updated." }
         format.json { render :show, status: :ok, location: @time_entry }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -65,7 +64,7 @@ class TimeEntriesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def time_entry_params
-      params.require(:time_entry).permit(:comment, :start, :end)
+      params.require(:time_entry).permit(:comment, :start, :end, :category_id)
     end
 
 

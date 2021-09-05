@@ -1,0 +1,20 @@
+.cell
+  %h3.text-center Current Categories
+.cell.medium-8
+  - if @categories.size > 0
+    %table
+      %thead
+        %tr
+          %th Category Name
+          %th{:colspan => "2"}
+      %tbody
+        - @categories.each do |category|
+          %tr
+            %td= category.name
+            %td= link_to '', edit_category_path(category), class: "fa fa-edit fa-2x"
+            %td= link_to '', category, method: :delete, data: { confirm: 'Are you sure to delete the category?' }, class: "fa fa-trash fa-2x"
+  - else
+    .callout.warning
+      %p.text-center There is no category. You need to add at least one category.
+.cell.medium-8         
+  = link_to 'New Category', new_category_path, class: "button small"

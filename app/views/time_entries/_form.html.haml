@@ -1,17 +1,21 @@
 = form_with(model: time_entry) do |form|
   - if time_entry.errors.any?
-    #error_explanation
-      %h2= pluralize(time_entry.errors.count, "error") + "prohibited this time_entry from being saved:"
-      - time_entry.errors.each do |error|
-        = error.full_message
+    .callout.alert.small
+      %h5 Please correct errors: 
+      %ul
+        - time_entry.errors.each do |error|
+          %li= error.full_message 
   .grid-container
     .grid-x.grid-padding-x
-      .medium-6.cell
+      .medium-4.cell
         = form.label :start
         = form.text_field :start, class: 'datetimepicker', autocomplete: 'off'
-      .medium-6.cell
+      .medium-4.cell
         = form.label :end
         = form.text_field :end, class: 'datetimepicker', autocomplete: 'off'
+      .medium-4.cell
+        %label Category
+        = form.collection_select :category_id, Category.all, :id, :name
       .cell
         = form.label :comment
         = form.text_field :comment

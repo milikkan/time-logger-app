@@ -38,7 +38,7 @@
               %td= time_entry.end
               %td hh:dd
               %td= time_entry.comment
-              %td Work
+              %td= show_category(Category.all, time_entry)
               %td= link_to '', edit_time_entry_path(time_entry), class: "fa fa-edit fa-2x"
               %td= link_to '', time_entry, method: :delete, data: { confirm: 'Are you sure to delete this time entry?' }, class: "fa fa-trash fa-2x"
   - else

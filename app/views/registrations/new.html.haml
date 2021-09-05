@@ -3,10 +3,11 @@
 .cell
   = form_with model: @user, url: sign_up_path do |form|
     - if @user.errors.any?
-      .callout.alert
+      .callout.alert.small
         %h5 Please correct errors: 
-        - @user.errors.each do |error|
-          %p= error.full_message 
+        %ul
+          - @user.errors.each do |error|
+            %li= error.full_message 
     = form.label :email
     = form.text_field :email, placeholder: "john@example.com"
     = form.label :password
