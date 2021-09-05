@@ -27,16 +27,16 @@
           %tr
           %th Start
           %th End
-          %th Duration
+          %th Duration (hh:mm)
           %th Comment
           %th Category
           %th{:colspan => "2"}
         %tbody>
           - @time_entries.each do |time_entry|
             %tr
-              %td= time_entry.start
-              %td= time_entry.end
-              %td hh:dd
+              %td= display_time_entry(time_entry.start)
+              %td= display_time_entry(time_entry.end)
+              %td= convert_to_day_hour_minute(time_entry.end, time_entry.start)
               %td= time_entry.comment
               %td= show_category(Category.all, time_entry)
               %td= link_to '', edit_time_entry_path(time_entry), class: "fa fa-edit fa-2x"

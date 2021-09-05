@@ -10,4 +10,10 @@ Rails.application.routes.draw do
   get 'sign_in', to: 'sessions#new'
   post 'sign_in', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
+
+  get 'user_time_logs', to: 'reports#user_time'
+  get 'category_time_logs', to: 'reports#category_time'
+
+  get 'users', to: 'users#manage'
+
 end

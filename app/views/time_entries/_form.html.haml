@@ -9,16 +9,16 @@
     .grid-x.grid-padding-x
       .medium-4.cell
         = form.label :start
-        = form.text_field :start, class: 'datetimepicker', autocomplete: 'off'
+        = form.text_field :start, class: 'datetimepicker', autocomplete: 'off', placeholder: 'dd.MM.yyy hh:mm'
       .medium-4.cell
         = form.label :end
-        = form.text_field :end, class: 'datetimepicker', autocomplete: 'off'
+        = form.text_field :end, class: 'datetimepicker', autocomplete: 'off', placeholder: 'dd.MM.yyy hh:mm'
       .medium-4.cell
         %label Category
         = form.collection_select :category_id, Category.all, :id, :name
       .cell
         = form.label :comment
-        = form.text_field :comment
+        = form.text_field :comment, placeholder: "What did you work on?"
       .cell
         = form.submit "Save", class: "button"
         = link_to "Cancel", time_entries_path, class: "button warning"

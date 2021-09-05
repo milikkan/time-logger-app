@@ -1,0 +1,44 @@
+.cell
+  %h4 Access Time Logs per User
+.cell
+  = form_with url: user_time_logs_path, method: "get", local: true do |f|
+    .grid-container
+      .grid-x.grid-padding-x
+        .cell.medium-3
+          = f.label :user, "Select User"
+          = select_tag :user, options_from_collection_for_select(User.all, "id", "email", @selected_user_id), {:include_blank => "Select User"}
+        .cell.medium-3
+          = f.label :start, "Select start date"
+          = f.text_field :start, placeholder: "dd.mm.yyy", class: "datepicker", value: display_date_value(@selected_start)
+        .cell.medium-3
+          = f.label :end, "Select end date"
+          = f.text_field :end, placeholder: "dd.mm.yyy", class: "datepicker", value: display_date_value(@selected_end)
+        .cell.align-self-middle.medium-3
+          = f.submit "Find Entries", class: "button", style: "margin-bottom: 0"
+.cell
+  - if @time_entries.size > 0
+    %table
+      %thead
+        %tr
+          %th Start
+          %th End
+          %th Duration (hh:mm)
+          %th Comment
+          %th Category
+      %tbody
+        - @time_entries.each do |time_entry|
+          %tr
+            %td= display_time_entry(time_entry.start)
+            %td= display_time_entry(time_entry.end)
+            %td= convert_to_hour_minute(time_entry.end, time_entry.start)
+            %td= time_entry.comment
+            %td= show_category(Category.all, time_entry)
+        %tr
+          %td.text-right{:colspan => "2"}
+            %strong TOTAL
+          %td{:colspan => "3"}
+            = display_total_hours(@time_entries)
+
+  - else
+    .callout.warning
+      %p.text-center No user selected or there is no time entry for the selected user.
