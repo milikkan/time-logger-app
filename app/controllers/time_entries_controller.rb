@@ -1,6 +1,6 @@
 class TimeEntriesController < ApplicationController
   include Redirectable
-  before_action :set_time_entry, only: %i[ show edit update destroy ]
+  before_action :set_time_entry, only: %i[ edit update destroy ]
   before_action :redirect_not_loggedin_users
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_time_entry
 
@@ -9,11 +9,6 @@ class TimeEntriesController < ApplicationController
     #@time_entries = TimeEntry.all
     @time_entries = Current.user.time_entries.all
     #render plain: Current.user.inspect
-  end
-
-  # GET /time_entries/1 or /time_entries/1.json
-  def show
-    redirect_to time_entries_path
   end
 
   # GET /time_entries/new

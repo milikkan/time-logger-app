@@ -14,6 +14,7 @@
 //= require jquery
 //= require foundation
 //= require jquery.datetimepicker.full.min
+//= require timer
 
 $(function(){ 
 	$(document).foundation(); 

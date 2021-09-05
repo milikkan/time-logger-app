@@ -2,7 +2,8 @@
 Rails.application.routes.draw do
   root 'main#index'
 
-  resources :time_entries
+  resources :time_entries, except: :show
+  resources :categories, except: :show
   
   get 'sign_up', to: 'registrations#new'
   post 'sign_up', to: 'registrations#create'

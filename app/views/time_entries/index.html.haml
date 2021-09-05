@@ -1,25 +1,48 @@
-.cell
-  %h1 Time Entries
+.cell.callout.success
+  .grid-x.grid-padding-x
+    .cell
+      %h5 Press the play icon to log a new time entry...
+    .cell.large-6
+      %input{:type => "text", :placeholder => "What are you working on?"}
+    .cell.large-2  
+      %select
+        %option Work
+        %option Self study
+        %option Exercise
+        %option Leave
+        %option Other
+    .cell.large-2
+      %span#hours> 00
+      = ":"
+      %span#minutes> 00
+      = ":"
+      %span#seconds> 00
+    .cell.large-2
+      .fa.fa-play-circle.fa-3x.timer-button
 .cell
   - if @time_entries.size > 0
-    %table
-      %thead
-        %tr
-        %th Start
-        %th End
-        %th Comment
-        %th Category
-        %th{:colspan => "2"}
-      %tbody>
-        - @time_entries.each do |time_entry|
+    .callout.primary
+      %table
+        %thead
           %tr
-            %td= time_entry.start
-            %td= time_entry.end
-            %td= time_entry.comment
-            %td Work
-            %td= link_to '', edit_time_entry_path(time_entry), class: "fa fa-edit fa-2x"
-            %td= link_to '', time_entry, method: :delete, data: { confirm: 'Are you sure to delete this time entry?' }, class: "fa fa-trash fa-2x"
+          %th Start
+          %th End
+          %th Duration
+          %th Comment
+          %th Category
+          %th{:colspan => "2"}
+        %tbody>
+          - @time_entries.each do |time_entry|
+            %tr
+              %td= time_entry.start
+              %td= time_entry.end
+              %td hh:dd
+              %td= time_entry.comment
+              %td Work
+              %td= link_to '', edit_time_entry_path(time_entry), class: "fa fa-edit fa-2x"
+              %td= link_to '', time_entry, method: :delete, data: { confirm: 'Are you sure to delete this time entry?' }, class: "fa fa-trash fa-2x"
   - else
-    %p.text-center There is no time entry yet. Your time entries will be listed here.
-
-  = link_to 'New Time Entry', new_time_entry_path, class: 'button small'
+    .callout.warning
+      %p.text-center There is no time entry yet. Your time entries will be listed here.
+.cell
+  = link_to 'Enter New Time Manually', new_time_entry_path, class: 'button small'
