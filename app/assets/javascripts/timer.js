@@ -2,7 +2,7 @@ function a() {
 	const timerBtn = $(".timer-button");
 	var t;
   timerBtn.click(function() {
-  	if (timerBtn.hasClass("fa-play-circle")) {
+    if (timerBtn.hasClass("fa-play-circle")) {
       timerBtn.removeClass("fa-play-circle");
       timerBtn.addClass("fa-stop-circle");
       t = startTimer();

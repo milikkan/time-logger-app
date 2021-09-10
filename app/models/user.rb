@@ -15,5 +15,4 @@ class User < ApplicationRecord
 	# TODO add email distinct
 
 	has_many :time_entries, dependent: :destroy
-
 end
