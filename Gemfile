@@ -39,8 +39,6 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'solargraph'
-  gem 'rubocop'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 
@@ -53,6 +51,11 @@ group :development do
   gem 'listen', '~> 3.3'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  gem 'solargraph'
+  gem 'rubocop'
+  gem 'guard', '~> 2.18'
+  gem 'guard-livereload', '~> 2.5', require: false
+  #gem 'rack-livereload', '~> 0.3.17'
 end
 
 group :test do
