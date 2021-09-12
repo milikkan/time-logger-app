@@ -1,0 +1,7 @@
+:plain
+  var table = $('#time-entries-table');
+  table.html("#{
+    j render partial: "time_entries_table", locals: {t: @time_entries}
+  }");
+  var flashNotice = $('.flash-notice');
+  if (flashNotice) flashNotice.css("display", "none");

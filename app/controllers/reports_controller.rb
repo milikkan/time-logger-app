@@ -3,7 +3,7 @@ class ReportsController < ApplicationController
 	before_action :redirect_non_admin_users
 
   def user_time
-  	if params[:user].present?
+    if params[:user].present?
       @selected_user_id = params[:user]
       @selected_start = params[:start]
       @selected_end = params[:end]
@@ -15,9 +15,9 @@ class ReportsController < ApplicationController
       @time_entries = user.time_entries.all.filter do |time_entry|
         time_entry.start >= start_date and time_entry.end <= end_date
       end
-  	else
-  		@time_entries = []
-  	end
+    else
+      @time_entries = []
+    end
   end
 
   def category_time

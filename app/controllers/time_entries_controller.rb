@@ -6,6 +6,7 @@ class TimeEntriesController < ApplicationController
 
   # GET /time_entries or /time_entries.json
   def index
+    @timer = TimeEntry.new
     @time_entries = Current.user.time_entries.all
     #render plain: @categories.inspect
   end
@@ -25,10 +26,14 @@ class TimeEntriesController < ApplicationController
 
     respond_to do |format|
       if @time_entry.save
-        format.html { redirect_to time_entries_path, notice: "Time entry was successfully created." }
+
+        @time_entries = Current.user.time_entries.all
+        format.html { redirect_to time_entries_path, notice: "New time entry created." }
+        format.js
         format.json { render :show, status: :created, location: @time_entry }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        # format.html { redirect_to time_entries_path, notice: "Error!!!" }
+        format.html { render :new }
         format.json { render json: @time_entry.errors, status: :unprocessable_entity }
       end
     end
@@ -38,7 +43,7 @@ class TimeEntriesController < ApplicationController
   def update
     respond_to do |format|
       if @time_entry.update(time_entry_params)
-        format.html { redirect_to time_entries_path, notice: "Time entry was successfully updated." }
+        format.html { redirect_to time_entries_path, notice: "Time entry updated." }
         format.json { render :show, status: :ok, location: @time_entry }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -51,7 +56,7 @@ class TimeEntriesController < ApplicationController
   def destroy
     @time_entry.destroy
     respond_to do |format|
-      format.html { redirect_to time_entries_url, notice: "Time entry was successfully destroyed." }
+      format.html { redirect_to time_entries_url, notice: "Time entry deleted." }
       format.json { head :no_content }
     end
   end

@@ -24,7 +24,7 @@ gem 'haml'
 gem 'foundation-rails'
 gem 'autoprefixer-rails'
 gem 'jquery-rails', '~> 4.4'
-gem "font-awesome-rails"
+gem 'font-awesome-rails'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
