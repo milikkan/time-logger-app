@@ -1,20 +1,7 @@
-/*
-- start button -> onclick
-  - preventDefault()
-  - change button to stop button
-  - set #start-time value to current time
-  - start #timer components
-
-- stop_button
-  - change button to stop button
-  - set #end-time value to #start-time + elapsed time
-  - reset #timer components
-  - reset comment and category inputs
-  - submit()
-*/
 function controlTimer() {
   const timerBtn = $("#timer-button");
   var t;
+  var selectedCategoryId = $("#time_entry_category_id option:selected").val();
   timerBtn.on("click", function (event) {
     if (timerBtn.hasClass("fa-play-circle")) {
       event.preventDefault();
@@ -27,9 +14,7 @@ function controlTimer() {
       timerBtn.addClass("fa-play-circle");
       $("#end-time").val(new Date());
       clearInterval(t);
-      $("#timer .seconds").html("00");
-      $("#timer .minutes").html("00");
-      $("#timer .minutes").html("00");
+      resetTimeEntry(selectedCategoryId);
     }
   });
 }
@@ -46,6 +31,16 @@ function startTimer() {
     $("#timer .minutes").html(pad(parseInt((sec / 60) % 60, 10)));
     $("#timer .hours").html(pad(parseInt(sec / 3600, 10)));
   }, 1000);
+}
+
+function resetTimeEntry(categoryId) {
+  $("#timer .seconds").html("00");
+  $("#timer .minutes").html("00");
+  $("#timer .minutes").html("00");
+  $("#time_entry_comment")
+    .val("")
+    .attr("placeholder", "What are you working on?");
+  $("#time_entry_category_id").val(categoryId);
 }
 
 $(function () {
