@@ -14,6 +14,6 @@ module Redirectable
   end
 
   def is_admin?
-  	Current.user.is_admin
+    Current.user.is_admin
   end
 end

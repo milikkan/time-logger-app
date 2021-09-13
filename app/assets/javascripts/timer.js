@@ -14,7 +14,10 @@ function controlTimer() {
       timerBtn.addClass("fa-play-circle");
       $("#end-time").val(new Date());
       clearInterval(t);
-      resetTimeEntry(selectedCategoryId);
+      //resetTimeEntry(selectedCategoryId);
+      $("body").on("ajax:complete", () => {
+        resetTimeEntry(selectedCategoryId);
+      });
     }
   });
 }
