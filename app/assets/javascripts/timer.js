@@ -29,6 +29,7 @@ function controlTimer() {
       clearInterval(t);
       $("#timer .seconds").html("00");
       $("#timer .minutes").html("00");
+      $("#timer .minutes").html("00");
     }
   });
 }
@@ -42,7 +43,8 @@ function startTimer() {
 
   return setInterval(function () {
     $("#timer .seconds").html(pad(++sec % 60));
-    $("#timer .minutes").html(pad(parseInt(sec / 60, 10)));
+    $("#timer .minutes").html(pad(parseInt((sec / 60) % 60, 10)));
+    $("#timer .hours").html(pad(parseInt(sec / 3600, 10)));
   }, 1000);
 }
 

@@ -13,18 +13,6 @@
 //= require activestorage
 //= require jquery
 //= require foundation
-//= require jquery.datetimepicker.full.min
+//= require jquery.datetimepicker.full
 //= require timer
-
-$(function(){ 
-	$(document).foundation(); 
-
-  jQuery('.datetimepicker').datetimepicker({
-  	format: 'd.m.Y H:i'
-  });
-
-  jQuery('.datepicker').datetimepicker({
-  	timepicker: false,
-  	format: 'd.m.Y'
-  });
-});
+//= require common

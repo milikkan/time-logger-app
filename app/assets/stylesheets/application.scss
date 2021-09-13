@@ -20,6 +20,7 @@
 /* Add imports of custom sass/scss files here */
 
 @import "font-awesome";
+@import "jquery.datetimepicker";
 
 .top-bar {
   margin-bottom: 1rem;
@@ -49,7 +50,7 @@
       color: #000;
     }
     .fa-twitter {
-      color: #1DA1F2;
+      color: #1da1f2;
     }
   }
 }
