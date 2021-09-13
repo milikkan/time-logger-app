@@ -5,7 +5,7 @@
         %tr
         %th Start
         %th End
-        %th Duration (hh:mm)
+        %th Duration (hh:mm:ss)
         %th Comment
         %th Category
         %th{:colspan => "2"}
@@ -14,9 +14,9 @@
           %tr
             %td= display_time_entry(t_entry.start)
             %td= display_time_entry(t_entry.end)
-            %td= convert_to_day_hour_minute(t_entry.end, t_entry.start)
-            %td= t_entry.comment
-            %td= show_category(Category.all, t_entry) 
+            %td= show_duration_between(t_entry.end, t_entry.start)
+            %td= display_comment(t_entry.comment)
+            %td= show_category(t_entry) 
             %td= link_to '', edit_time_entry_path(t_entry), class: "fa fa-edit fa-2x"
             %td= link_to '', t_entry, method: :delete, data: { confirm: 'Are you sure to delete this time entry?' }, class: "fa fa-trash fa-2x"
 - else

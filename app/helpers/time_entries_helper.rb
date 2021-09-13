@@ -1,35 +1,29 @@
 module TimeEntriesHelper
 
-	SECONDS_IN_A_MINUTE = 60
-	SECONDS_IN_AN_HOUR = 60 * SECONDS_IN_A_MINUTE
-	SECONDS_IN_A_DAY = 24 * SECONDS_IN_AN_HOUR
-
 	def display_time_entry(dt)
 		return '' if dt.nil?
     dt.localtime.to_s(:short)
 	end
 
-	def convert_to_day_hour_minute(end_time, start_time)
+	def show_duration_between(end_time, start_time)
 		return '' if end_time.nil? or start_time.nil?
     total_seconds = (end_time - start_time).to_i
-
-    num_days, remaining_seconds = total_seconds.divmod(SECONDS_IN_A_DAY)
-    num_hours, remaining_seconds = remaining_seconds.divmod(SECONDS_IN_AN_HOUR)
-    num_minutes, remaining_seconds = remaining_seconds.divmod(SECONDS_IN_A_MINUTE)
-
-    result = ''
-    result << print_number_of_days(num_days) unless num_days < 1
-    "#{result} #{pad(num_hours)}:#{pad(num_minutes)}"
+    format_duration(calculate_time_units(total_seconds))
 	end
 
 	private
 
-	def pad(num)
-    num > 9 ? num.to_s : "0" + num.to_s
-	end
+  def calculate_time_units(total_seconds)
+    days, remaining = total_seconds.divmod(24 * 60 * 60)
+    hours, remaining = remaining.divmod(60 * 60)
+    minutes, seconds = remaining.divmod(60)
+    return days, hours, minutes, seconds
+  end
 
-	def print_number_of_days(days)
-    suffix = days > 1 ? "days" : "day"
-    "#{days} #{suffix}"
-	end
+  def format_duration(units)
+    days, hours, minutes, seconds = units
+    days = days.zero? ? '' : '+' << pluralize(days, 'day')
+    "#{days} #{hours.to_s.rjust(2, '0')}:#{minutes.to_s.rjust(2, '0')}:#{seconds.to_s.rjust(2, '0')}"
+  end
+
 end

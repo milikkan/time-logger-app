@@ -1,6 +1,6 @@
 module CategoriesHelper
-  def show_category(categories, time_entry)
-    category = categories.find { |category| category.id == time_entry.category_id }
-    category.nil? ? '-' : category.name
+  def show_category(time_entry)
+    category = Category.where(["id = ?", time_entry.category_id])
+    category.empty? ? '-' : category.last.name
 	end
 end
