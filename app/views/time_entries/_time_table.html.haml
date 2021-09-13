@@ -1,0 +1,14 @@
+%table
+  %thead
+    %tr
+      %th{:width => "15%"} Start
+      %th{:width => "15%"} End
+      %th{:width => "15%"}
+        Duration
+        %br/
+        (hh:mm:ss)
+      %th.text-center Comment
+      %th.text-center{:width => "20%"} Category
+      %th{:colspan => "2", :width => "10%"}
+  %tbody#time-entries-table
+    = render "time_table_body", t: time_entries

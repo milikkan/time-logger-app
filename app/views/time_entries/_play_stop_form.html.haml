@@ -1,0 +1,20 @@
+= form_with(model: @timer, local:false) do |form|
+  .grid-x.grid-padding-x
+    .cell
+      %h5 Press play button to start a new time entry...
+    .cell.medium-6
+      = form.text_field :comment, placeholder: "What are you working on?"
+    .cell.medium-3
+      = form.collection_select :category_id, Category.all, :id, :name
+    .cell.medium-2.text-center
+      = form.hidden_field :start, value: DateTime.now, id: "start-time"
+      = form.hidden_field :end, value: DateTime.now + 1, id: "end-time"
+      #timer
+        %span.hours> 00
+        = ":"
+        %span.minutes> 00
+        = ":"
+        %span.seconds> 00
+    .cell.medium-1
+      %button.btn{:type => "submit"}
+        %i.fa.fa-play-circle.fa-3x#timer-button
