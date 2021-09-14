@@ -1,13 +1,22 @@
 = provide(:title, "Welcome")
-.cell.small-10
+.cell
   .callout.primary.large
     %h1.text-center Welcome to Time Logger
-    %p You can log your time using this simple application.
-    %p Please log in first to start the app.
-    %p You can sign up here if you don't have an account.
-    %p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    .grid-container
+      .grid-x.grid-margin-x.small-up-2
+        .cell.text-center
+          .card
+            .card-divider
+              %h4 Log Your Time
+            = image_tag "time_log_productivity.jpg"
+            .card-section
+              %p Log your activity time to boost your productivity.
+              %p Use play/stop button for easy logging.
+        .cell.text-center
+          .card
+            .card-divider
+              %h4 Admin Reports
+            = image_tag "admin_reports.jpg"
+            .card-section
+              %p Admins can get user detailed reports about logged time entries.
+              %p Reports are user based or category based.
