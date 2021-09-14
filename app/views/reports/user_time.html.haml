@@ -3,20 +3,20 @@
   %h4 Access Time Logs per User
 .cell
   = form_with url: user_time_logs_path, method: "get", local: true do |f|
-  .grid-container
-    .grid-x.grid-padding-x
-      .cell.medium-3
-        = f.label :user, "Select User"
-        = select_tag :user, options_from_collection_for_select(User.all, "id", "email", @selected_user_id), {:include_blank => "Select User", id: "selection"}
-      .cell.medium-3
-        = f.label :start, "Select start date"
-        = f.text_field :start, placeholder: "dd.mm.yyy", class: "datepicker", value: display_date_value(@selected_start)
-      .cell.medium-3
-        = f.label :end, "Select end date"
-        = f.text_field :end, placeholder: "dd.mm.yyy", class: "datepicker", value: display_date_value(@selected_end)
-      .cell.align-self-middle.medium-3
-        = f.submit "Find Entries", class: "button", id: "find-entries"
-        %button.button.warning#reset-filters Reset
+    .grid-container
+      .grid-x.grid-padding-x
+        .cell.medium-3
+          = f.label :user, "Select User"
+          = select_tag :user, options_from_collection_for_select(User.all, "id", "email", @selected_user_id), {:include_blank => "Select User", id: "selection"}
+        .cell.medium-3
+          = f.label :start, "Select start date"
+          = f.text_field :start, placeholder: "dd.mm.yyy", class: "datepicker", value: display_date_value(@selected_start)
+        .cell.medium-3
+          = f.label :end, "Select end date"
+          = f.text_field :end, placeholder: "dd.mm.yyy", class: "datepicker", value: display_date_value(@selected_end)
+        .cell.align-self-middle.medium-3
+          = f.submit "Find Entries", class: "button", id: "find-entries"
+          %button.button.warning#reset-filters Reset
 .cell
   - unless @time_entries.empty?
     = render "shared/time_table/table_head", time_entries: @time_entries, controls: false, total: true
