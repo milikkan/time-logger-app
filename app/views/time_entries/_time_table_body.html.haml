@@ -3,7 +3,7 @@
     %td= display_time_entry(t_entry.start)
     %td= display_time_entry(t_entry.end)
     %td= show_duration_between(t_entry.end, t_entry.start)
-    %td.text-center= display_comment(t_entry.comment)
-    %td.text-center= show_category(t_entry) 
+    %td.text-center= display_comment(t_entry)
+    %td.text-center= display_category(t_entry) 
     %td= link_to '', edit_time_entry_path(t_entry), class: "fa fa-edit fa-2x"
     %td= link_to '', t_entry, method: :delete, data: { confirm: 'Are you sure to delete this time entry?' }, class: "fa fa-trash fa-2x"

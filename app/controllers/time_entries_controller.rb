@@ -1,6 +1,6 @@
 class TimeEntriesController < ApplicationController
   include Redirectable
-  before_action :set_time_entry, only: %i[ edit update destroy ]
+  before_action :set_time_entry, only: %i[ show edit update destroy ]
   before_action :set_all_time_entries
   before_action :redirect_not_logged_in_users
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_time_entry
@@ -8,7 +8,10 @@ class TimeEntriesController < ApplicationController
   # GET /time_entries
   def index
     @timer = TimeEntry.new
-    
+  end
+
+  # GET /time_entries/1
+  def show
   end
 
   # GET /time_entries/new

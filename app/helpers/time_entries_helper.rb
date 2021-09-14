@@ -11,6 +11,13 @@ module TimeEntriesHelper
     format_duration(calculate_time_units(total_seconds))
 	end
 
+  def display_comment(time_entry)
+    return 'none' if time_entry.comment.empty?
+    output = h truncate(time_entry.comment, length: 30)
+    output += link_to('[more]', time_entry_path(time_entry)) if time_entry.comment.size > 30
+    output.html_safe
+  end
+
 	private
 
   def calculate_time_units(total_seconds)

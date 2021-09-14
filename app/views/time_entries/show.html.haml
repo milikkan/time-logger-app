@@ -1,0 +1,26 @@
+= provide(:title, "Time Entry")
+.cell
+  %h2.text-center Time Entry
+  %ul.time-entry-list
+    %li
+      %strong 
+        Start: 
+      = display_time_entry(@time_entry.start)
+    %li
+      %strong 
+        Start: 
+      = display_time_entry(@time_entry.end)
+    %li
+      %strong 
+        Duration (hh:mm:ss): 
+      = show_duration_between(@time_entry.end, @time_entry.start)
+    %li
+      %strong 
+        Category: 
+      = display_category(@time_entry)
+    %li
+      %strong 
+        Comment: 
+      = @time_entry.comment.empty? ? "none" : @time_entry.comment
+.cell
+  = link_to "Back to Time Logs", time_entries_path, class: "button"
