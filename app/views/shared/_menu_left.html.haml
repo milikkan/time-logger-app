@@ -1,0 +1,5 @@
+- if Current.user
+  %li= link_to "My Time Logs", time_entries_path
+  %li= link_to "New Entry", new_time_entry_path
+  - if Current.user.is_admin
+    = render "shared/menu_left_admin"

@@ -1,0 +1,11 @@
+%ul.menu
+  - if Current.user
+    %li.menu-text
+      = "Logged in as #{generate_title(Current.user)}"
+    %li
+      = button_to "Log out", logout_path, method: :delete, class: "hollow button small"
+  - else
+    %li
+      = link_to "Log In", sign_in_path, class: "button small"
+    %li
+      = link_to "Sign Up", sign_up_path, class: "button success small"

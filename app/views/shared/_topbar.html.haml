@@ -3,26 +3,6 @@
     %ul.menu.dropdown{"data-dropdown-menu" => ""}
       %li.fa.fa-hourglass.brand-icon.fa-2x
       %li= link_to "TIME LOGGER", root_path, class: "menu-text"
-      - if Current.user
-        %li= link_to "My Time Logs", time_entries_path
-        %li= link_to "New Entry", new_time_entry_path
-        - if Current.user.is_admin
-          %li
-            = link_to "Reports"
-            %ul.menu.vertical
-              %li= link_to "User Time Logs", user_time_logs_path
-              %li= link_to "Category Time Logs", category_time_logs_path
-          %li= link_to "Categories", categories_path
-          %li= link_to "Users", users_path
+      = render "shared/menu_left"
   .top-bar-right
-    %ul.menu
-      - if Current.user
-        %li.menu-text
-          = "Logged in as #{generate_title(Current.user)}"
-        %li
-          = button_to "Log out", logout_path, method: :delete, class: "hollow button small"
-      - else
-        %li
-          = link_to "Log In", sign_in_path, class: "button small"
-        %li
-          = link_to "Sign Up", sign_up_path, class: "button success small"
+    = render "shared/menu_right"
