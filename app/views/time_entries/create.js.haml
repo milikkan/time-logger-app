@@ -1,7 +1,9 @@
+#- not being used at the moment, maybe later...
+
 :plain
   var table = $('#time-entries-table');
   table.html("#{
-    j render 'time_table_body', t: @time_entries
+    j render 'time_table', time_entries: @time_entries
   }");
   var flashNotice = $('.flash-notice');
   if (flashNotice) flashNotice.css("display", "none");

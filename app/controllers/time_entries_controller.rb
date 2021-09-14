@@ -1,13 +1,14 @@
 class TimeEntriesController < ApplicationController
   include Redirectable
   before_action :set_time_entry, only: %i[ edit update destroy ]
-  before_action :set_all_time_entries, only: %i[index create]
+  before_action :set_all_time_entries
   before_action :redirect_not_logged_in_users
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_time_entry
 
   # GET /time_entries
   def index
     @timer = TimeEntry.new
+    
   end
 
   # GET /time_entries/new
@@ -25,8 +26,8 @@ class TimeEntriesController < ApplicationController
 
     respond_to do |format|
       if @time_entry.save
-        format.html { redirect_to time_entries_path, notice: "New time entry created."}
-        format.js
+        format.html { redirect_to last_page, notice: "New time entry created."}
+        #format.js
       else
         format.html { render :new }
       end
@@ -49,7 +50,7 @@ class TimeEntriesController < ApplicationController
   # DELETE /time_entries/1
   def destroy
     @time_entry.destroy
-    redirect_to time_entries_url, notice: "Time entry deleted."
+    redirect_to last_page, notice: "Time entry deleted."
   end
 
   private
@@ -62,7 +63,12 @@ class TimeEntriesController < ApplicationController
     end
 
     def set_all_time_entries
-      @time_entries = Current.user.time_entries.all
+      @time_entries = TimeEntry.where(user_id: Current.user.id).paginate(page: params[:page], per_page: 10).order('created_at ASC')
+    end
+
+    def last_page
+      last_page = @time_entries.total_pages
+      time_entries_path(page: last_page)
     end
 
     def invalid_time_entry

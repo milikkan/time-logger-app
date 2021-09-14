@@ -1,4 +1,4 @@
-= form_with(model: @timer, local:false) do |form|
+= form_with(model: @timer, local:true) do |form|
   .grid-x.grid-padding-x
     .cell
       %h5 Press play button to start a new time entry...
@@ -7,8 +7,8 @@
     .cell.medium-3
       = form.collection_select :category_id, Category.all, :id, :name
     .cell.medium-2.text-center
-      = form.hidden_field :start, value: DateTime.now, id: "start-time"
-      = form.hidden_field :end, value: DateTime.now + 1, id: "end-time"
+      = form.hidden_field :start, id: "start-time"
+      = form.hidden_field :end, id: "end-time"
       #timer
         %span.hours> 00
         = ":"
