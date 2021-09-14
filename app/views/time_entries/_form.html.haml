@@ -1,10 +1,5 @@
 = form_with(model: time_entry) do |form|
-  - if time_entry.errors.any?
-    .callout.alert.small
-      %h5 Please correct errors: 
-      %ul
-        - time_entry.errors.each do |error|
-          %li= error.full_message 
+  = render "shared/error_box", obj: time_entry
   .grid-container
     .grid-x.grid-padding-x
       .medium-4.cell

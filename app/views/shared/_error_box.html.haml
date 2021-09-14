@@ -1,0 +1,6 @@
+- if obj.errors.any?
+  .callout.alert.small
+    %h5 Please correct errors: 
+    %ul
+      - obj.errors.each do |error|
+        %li= error.full_message

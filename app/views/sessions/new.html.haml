@@ -2,12 +2,7 @@
 .cell
   %h1 Log In
 .cell
-  = form_with url: sign_in_path do |form|
-    -# if @user.errors.any?
-      .callout.alert
-        %h5 Please correct errors: 
-        - @user.errors.each do |error|
-          %p= error.full_message 
+  = form_with url: sign_in_path do |form| 
     = form.label :email
     = form.text_field :email, placeholder: "john@example.com"
     = form.label :password

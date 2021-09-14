@@ -1,10 +1,5 @@
 = form_with(model: category) do |form|
-  - if category.errors.any?
-    .callout.alert.small
-      %h5 Please correct errors: 
-      %ul
-        - category.errors.each do |error|
-          %li= error.full_message
+  = render "shared/error_box", obj: category
   = form.label :name
   = form.text_field :name
   = form.submit class: "button"
