@@ -7,6 +7,7 @@ function controlTimer() {
       event.preventDefault();
       timerBtn.removeClass("fa-play-circle");
       timerBtn.addClass("fa-stop-circle");
+      timerBtn.css("color", "red");
       $("#start-time").val(new Date());
       t = startTimer();
     } else {
