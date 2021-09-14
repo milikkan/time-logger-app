@@ -1,0 +1,16 @@
+- t.each do |t_entry|
+  %tr
+    %td= display_time_entry(t_entry.start, :short)
+    %td= display_time_entry(t_entry.end, :short)
+    %td= show_duration_between(t_entry.end, t_entry.start)
+    %td.text-center= display_comment(t_entry)
+    %td.text-center= display_category(t_entry)
+    - if controls
+      %td= link_to '', edit_time_entry_path(t_entry), class: "fa fa-edit fa-2x"
+      %td= link_to '', t_entry, method: :delete, data: { confirm: 'Are you sure to delete this time entry?' }, class: "fa fa-trash fa-2x"
+- if total
+  %tr.total-duration
+    %td.text-right{:colspan => "2"}
+      %strong TOTAL
+    %td{:colspan => "3"}
+      = display_total_hours(@time_entries)

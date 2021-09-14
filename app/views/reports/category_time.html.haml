@@ -17,29 +17,8 @@
         .cell.align-self-middle.medium-3
           = f.submit "Find Entries", class: "button", style: "margin-bottom: 0"
 .cell
-  - if @time_entries.size > 0
-    %table
-      %thead
-        %tr
-          %th Start
-          %th End
-          %th Duration (hh:mm)
-          %th Comment
-          %th User
-      %tbody
-        - @time_entries.each do |time_entry|
-          %tr
-            %td= display_time_entry(time_entry.start)
-            %td= display_time_entry(time_entry.end)
-            %td= convert_to_hour_minute(time_entry.end, time_entry.start)
-            %td= time_entry.comment
-            %td= display_user_for(time_entry)
-        %tr
-          %td.text-right{:colspan => "2"}
-            %strong TOTAL
-          %td{:colspan => "3"}
-            = display_total_hours(@time_entries)
-
-  - else
+  - unless @time_entries.empty?
+    = render "shared/time_table/table_head", time_entries: @time_entries, controls: false, total: true
+  - if @time_entries.empty?
     .callout.warning
-      %p.text-center No category selected or there is no time entry for the selected category.
+      %p.text-center No user selected or there is no time entry for the selected user.

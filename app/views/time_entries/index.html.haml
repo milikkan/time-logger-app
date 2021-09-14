@@ -3,7 +3,7 @@
   = render "play_stop_form"
 .cell
   .callout.primary
-    = render "time_table", time_entries: @time_entries
+    = render "shared/time_table/table_head", time_entries: @time_entries, controls: true, total: false
   .digg_pagination
     = will_paginate @time_entries
   - if @time_entries.empty?

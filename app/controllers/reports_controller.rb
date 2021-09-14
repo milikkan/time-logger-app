@@ -13,7 +13,7 @@ class ReportsController < ApplicationController
       end_date = construct_date(@selected_end, true)
 
       @time_entries = user.time_entries.all.filter do |time_entry|
-        time_entry.start >= start_date and time_entry.end <= end_date
+        time_entry.start >= start_date && time_entry.end <= end_date
       end
     else
       @time_entries = []
@@ -31,7 +31,7 @@ class ReportsController < ApplicationController
       end_date = construct_date(@selected_end, true)
 
       @time_entries = category.time_entries.all.filter do |time_entry|
-        time_entry.start >= start_date and time_entry.end <= end_date
+        time_entry.start >= start_date && time_entry.end <= end_date
       end
     else
       @time_entries = []

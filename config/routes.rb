@@ -13,7 +13,4 @@ Rails.application.routes.draw do
 
   get 'user_time_logs', to: 'reports#user_time'
   get 'category_time_logs', to: 'reports#category_time'
-
-  get 'users', to: 'users#manage'
-
 end

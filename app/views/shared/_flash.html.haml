@@ -2,11 +2,9 @@
   .cell.flash-notice
     .callout.primary{'data-closable' => ''}
       = flash[:notice]
-      %button.close-button{'aria-label' => 'Dismiss alert', 'data-close' => ''}
-        %span{'aria-hidden' => 'true'} &times;
+      = render "shared/close_button"
 - if flash[:error]
   .cell.flash-error
     .callout.alert{'data-closable' => ''}
       = flash[:error]
-      %button.close-button{'aria-label' => 'Dismiss alert', 'data-close' => ''}
-        %span{'aria-hidden' => 'true'} &times;
+      = render "shared/close_button"

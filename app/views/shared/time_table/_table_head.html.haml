@@ -9,6 +9,7 @@
         (hh:mm:ss)
       %th.text-center Comment
       %th.text-center{:width => "20%"} Category
-      %th{:colspan => "2", :width => "10%"}
+      - if controls
+        %th{:colspan => "2", :width => "10%"}
   %tbody
-    = render "time_table_body", t: time_entries
+    = render "shared/time_table/table_body", t: time_entries, controls: controls, total: total
