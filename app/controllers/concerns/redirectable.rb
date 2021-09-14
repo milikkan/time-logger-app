@@ -1,5 +1,5 @@
 module Redirectable
-  def redirect_not_loggedin_users
+  def redirect_not_logged_in_users
     redirect_to root_path unless is_logged_in?
   end
 

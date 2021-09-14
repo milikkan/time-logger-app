@@ -1,14 +1,13 @@
 class TimeEntriesController < ApplicationController
   include Redirectable
   before_action :set_time_entry, only: %i[ edit update destroy ]
-  before_action :redirect_not_loggedin_users
+  before_action :set_all_time_entries, only: %i[index create]
+  before_action :redirect_not_logged_in_users
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_time_entry
 
-  # GET /time_entries or /time_entries.json
+  # GET /time_entries
   def index
     @timer = TimeEntry.new
-    @time_entries = Current.user.time_entries.all
-    #render plain: @categories.inspect
   end
 
   # GET /time_entries/new
@@ -20,58 +19,51 @@ class TimeEntriesController < ApplicationController
   def edit
   end
 
-  # POST /time_entries or /time_entries.json
+  # POST /time_entries
   def create
     @time_entry = Current.user.time_entries.build(time_entry_params)
 
     respond_to do |format|
       if @time_entry.save
-
-        @time_entries = Current.user.time_entries.all
-        format.html { redirect_to time_entries_path, notice: "New time entry created." }
+        format.html { redirect_to time_entries_path, notice: "New time entry created."}
         format.js
-        format.json { render :show, status: :created, location: @time_entry }
       else
-        # format.html { redirect_to time_entries_path, notice: "Error!!!" }
         format.html { render :new }
-        format.json { render json: @time_entry.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PATCH/PUT /time_entries/1 or /time_entries/1.json
+  # PATCH/PUT /time_entries/1
   def update
     respond_to do |format|
-      if @time_entry.update(time_entry_params)
-        format.html { redirect_to time_entries_path, notice: "Time entry updated." }
-        format.json { render :show, status: :ok, location: @time_entry }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @time_entry.errors, status: :unprocessable_entity }
-      end
+      format.html {
+        if @time_entry.update(time_entry_params)
+          redirect_to time_entries_path, notice: "Time entry updated."
+        else
+          render :edit
+        end
+      }
     end
   end
 
-  # DELETE /time_entries/1 or /time_entries/1.json
+  # DELETE /time_entries/1
   def destroy
     @time_entry.destroy
-    respond_to do |format|
-      format.html { redirect_to time_entries_url, notice: "Time entry deleted." }
-      format.json { head :no_content }
-    end
+    redirect_to time_entries_url, notice: "Time entry deleted."
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_time_entry
       @time_entry = TimeEntry.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def time_entry_params
       params.require(:time_entry).permit(:comment, :start, :end, :category_id)
     end
 
+    def set_all_time_entries
+      @time_entries = Current.user.time_entries.all
+    end
 
     def invalid_time_entry
       logger.error "Attempt to access invalid time entry #{params[:id]}"
