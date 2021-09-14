@@ -1,8 +1,8 @@
 module TimeEntriesHelper
 
-	def display_time_entry(dt)
+	def display_time_entry(dt, format)
 		return '' if dt.nil?
-    dt.localtime.to_s(:short)
+    dt.localtime.to_s(format)
 	end
 
 	def show_duration_between(end_time, start_time)

@@ -14,5 +14,7 @@
 //= require jquery
 //= require foundation
 //= require jquery.datetimepicker.full
+//= require js.cookie
+//= require browser_timezone_rails/set_time_zone
 //= require timer
 //= require common

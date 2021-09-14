@@ -18,6 +18,7 @@ gem 'autoprefixer-rails'
 gem 'jquery-rails', '~> 4.4'
 gem 'font-awesome-rails'
 gem 'will_paginate', '~> 3.3', '>= 3.3.1'
+gem 'browser-timezone-rails', '~> 1.1'
 
 # Use Active Model has_secure_password
 gem 'bcrypt', '~> 3.1.7'

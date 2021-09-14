@@ -9,10 +9,10 @@
     .grid-x.grid-padding-x
       .medium-4.cell
         = form.label :start
-        = form.text_field :start, class: 'datetimepicker', autocomplete: 'off', placeholder: 'dd.MM.yyy hh:mm'
+        = form.text_field :start, class: 'datetimepicker', autocomplete: 'off', placeholder: 'dd.MM.yyyy hh:mm', value: display_time_entry(time_entry.start, :time_logger_format)
       .medium-4.cell
         = form.label :end
-        = form.text_field :end, class: 'datetimepicker', autocomplete: 'off', placeholder: 'dd.MM.yyy hh:mm'
+        = form.text_field :end, class: 'datetimepicker', autocomplete: 'off', placeholder: 'dd.MM.yyyy hh:mm', value: display_time_entry(time_entry.end, :time_logger_format)
       .medium-4.cell
         %label Category
         = form.collection_select :category_id, Category.all, :id, :name
