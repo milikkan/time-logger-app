@@ -13,4 +13,8 @@ class TimeEntry < ApplicationRecord
       end
     end
   end
+
+  def duration
+    (self.end - self.start).to_i
+  end
 end
