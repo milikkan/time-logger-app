@@ -1,6 +1,7 @@
 module TimeEntriesHelper
 
   def display_time_entry(time_entry, format)
+    return '' unless time_entry
     time_entry.localtime.to_s(format)
   end
 
@@ -12,7 +13,6 @@ module TimeEntriesHelper
     return 'none' if time_entry.comment.empty?
     output = h truncate(time_entry.comment, length: 30)
     output += link_to('[more]', time_entry_path(time_entry)) if time_entry.comment.size > 30
-    output.html_safe
   end
 
   private
