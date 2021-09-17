@@ -1,6 +1,6 @@
 class ReportsController < ApplicationController
-	include Redirectable
-	before_action :redirect_non_admin_users
+  include Redirectable
+  before_action :redirect_non_admin_users
 
   def user_time
     if params[:user].present?

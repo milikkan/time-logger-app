@@ -14,9 +14,9 @@ module ReportsHelper
 
   private
 
-	def display_today
+  def display_today
     Time.now.strftime "%d.%m.%Y"
-	end
+  end
 
   def seconds_to_hour_and_minute(seconds)
     hours, remaining_seconds = seconds.divmod(60 * 60)

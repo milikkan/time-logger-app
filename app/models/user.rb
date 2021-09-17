@@ -4,15 +4,15 @@
 # password:string virtual
 # password_confirmation:string virtual
 class User < ApplicationRecord
-	has_secure_password
+  has_secure_password
 
-	validates :email, presence: true, format: {with: /\A[^@\s]+@[^@\s]+\z/, message: "must be a valid email address"}
-	validates :email, uniqueness: true
-	validates :password, length: {minimum: 6}
+  validates :email, presence: true, format: {with: /\A[^@\s]+@[^@\s]+\z/, message: "must be a valid email address"}
+  validates :email, uniqueness: true
+  validates :password, length: {minimum: 6}
 
-	# TODO add password length validates
-	# TODO add password presence
-	# TODO add email distinct
+  # TODO add password length validates
+  # TODO add password presence
+  # TODO add email distinct
 
-	has_many :time_entries, dependent: :destroy
+  has_many :time_entries, dependent: :destroy
 end
