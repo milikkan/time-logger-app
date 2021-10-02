@@ -12,8 +12,8 @@
           = f.label :start, "Select start date"
           = f.text_field :start, placeholder: "dd.mm.yyy", class: "datepicker", value: display_date_value(@selected_start)
         .cell.medium-3
-          = f.label :end, "Select end date"
-          = f.text_field :end, placeholder: "dd.mm.yyy", class: "datepicker", value: display_date_value(@selected_end)
+          = f.label :stop, "Select end date"
+          = f.text_field :stop, placeholder: "dd.mm.yyy", class: "datepicker", value: display_date_value(@selected_stop)
         .cell.align-self-middle.medium-3
           = f.submit "Find Entries", class: "button", id: "find-entries"
           %button.button.warning#reset-filters Reset

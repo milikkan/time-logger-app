@@ -1,7 +1,7 @@
 - t.each do |t_entry|
   %tr
     %td= display_time_entry(t_entry.start, :short)
-    %td= display_time_entry(t_entry.end, :short)
+    %td= display_time_entry(t_entry.stop, :short)
     %td= display_duration(t_entry)
     %td.text-center= display_comment(t_entry)
     %td.text-center= display_category(t_entry)

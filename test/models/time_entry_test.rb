@@ -5,7 +5,7 @@
 #  id          :bigint           not null, primary key
 #  comment     :string
 #  start       :datetime
-#  end         :datetime
+#  stop        :datetime
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  user_id     :integer

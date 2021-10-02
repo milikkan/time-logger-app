@@ -6,14 +6,14 @@ class ReportsController < ApplicationController
     if params[:user].present?
       @selected_user_id = params[:user]
       @selected_start = params[:start]
-      @selected_end = params[:end]
+      @selected_stop = params[:stop]
 
       user = User.find_by(id: @selected_user_id)
       start_date = construct_date(@selected_start)
-      end_date = construct_date(@selected_end, true)
+      stop_date = construct_date(@selected_stop, true)
 
       @time_entries = user.time_entries.all.filter do |time_entry|
-        time_entry.start >= start_date && time_entry.end <= end_date
+        time_entry.start >= start_date && time_entry.stop <= stop_date
       end
     else
       @time_entries = []
@@ -24,14 +24,14 @@ class ReportsController < ApplicationController
     if params[:category].present?
       @selected_category_id = params[:category]
       @selected_start = params[:start]
-      @selected_end = params[:end]
+      @selected_stop = params[:stop]
 
       category = Category.find_by(id: @selected_category_id)
       start_date = construct_date(@selected_start)
-      end_date = construct_date(@selected_end, true)
+      stop_date = construct_date(@selected_stop, true)
 
       @time_entries = category.time_entries.all.filter do |time_entry|
-        time_entry.start >= start_date && time_entry.end <= end_date
+        time_entry.start >= start_date && time_entry.stop <= stop_date
       end
     else
       @time_entries = []

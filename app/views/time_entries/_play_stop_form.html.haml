@@ -8,7 +8,7 @@
       = form.collection_select :category_id, Category.all, :id, :name
     .cell.medium-2.text-center
       = form.hidden_field :start, id: "start-time"
-      = form.hidden_field :end, id: "end-time"
+      = form.hidden_field :stop, id: "end-time"
       #timer
         %span.hours> 00
         = ":"

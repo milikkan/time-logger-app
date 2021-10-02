@@ -2,7 +2,7 @@ module ReportsHelper
 
   def display_total_hours(time_entries)
     seconds = time_entries.map do |time_entry|
-      (time_entry.end - time_entry.start).to_i
+      (time_entry.stop - time_entry.start).to_i
     end.inject(:+)
 
     seconds_to_hour_and_minute(seconds)

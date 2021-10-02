@@ -12,7 +12,6 @@ gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
 gem 'sassc-rails', '~> 2.1', '>= 2.1.2'
 
-#gem 'haml', '~> 5.2', '>= 5.2.2'
 gem 'haml-rails', '~> 2.0', '>= 2.0.1'
 gem 'foundation-rails'
 gem 'autoprefixer-rails'

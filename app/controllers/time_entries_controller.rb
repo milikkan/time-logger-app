@@ -62,7 +62,7 @@ class TimeEntriesController < ApplicationController
     end
 
     def time_entry_params
-      params.require(:time_entry).permit(:comment, :start, :end, :category_id)
+      params.require(:time_entry).permit(:comment, :start, :stop, :category_id)
     end
 
     def set_all_time_entries
