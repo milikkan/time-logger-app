@@ -11,9 +11,6 @@
 /db/*.sqlite3
 /db/*.sqlite3-*
 
-# Ignore database config
-/config/database.yml
-
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
@@ -34,6 +31,8 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+/config/database.yml
+/config/puma.rb
 
 /public/packs
 /public/packs-test
