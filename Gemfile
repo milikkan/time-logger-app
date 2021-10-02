@@ -12,7 +12,8 @@ gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
 gem 'sassc-rails', '~> 2.1', '>= 2.1.2'
 
-gem 'haml', '~> 5.2', '>= 5.2.2'
+#gem 'haml', '~> 5.2', '>= 5.2.2'
+gem 'haml-rails', '~> 2.0', '>= 2.0.1'
 gem 'foundation-rails'
 gem 'autoprefixer-rails'
 gem 'jquery-rails', '~> 4.4'
@@ -45,9 +46,8 @@ group :development do
   gem 'spring'
   gem 'solargraph'
   gem 'rubocop'
-  gem 'guard', '~> 2.18'
   gem 'guard-livereload', '~> 2.5', require: false
-  #gem 'rack-livereload', '~> 0.3.17'
+  gem 'annotate'
 end
 
 group :test do

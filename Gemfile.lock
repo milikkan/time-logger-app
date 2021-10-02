@@ -62,6 +62,9 @@ GEM
       zeitwerk (~> 2.3)
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
+    annotate (3.1.1)
+      activerecord (>= 3.2, < 7.0)
+      rake (>= 10.4, < 14.0)
     ast (2.4.2)
     autoprefixer-rails (10.3.3.0)
       execjs (~> 2)
@@ -98,6 +101,7 @@ GEM
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.6.0)
     erubi (1.10.0)
+    erubis (2.7.0)
     eventmachine (1.2.7)
     execjs (2.8.1)
     ffi (1.15.4)
@@ -128,6 +132,17 @@ GEM
     haml (5.2.2)
       temple (>= 0.8.0)
       tilt
+    haml-rails (2.0.1)
+      actionpack (>= 5.1)
+      activesupport (>= 5.1)
+      haml (>= 4.0.6, < 6.0)
+      html2haml (>= 1.0.1)
+      railties (>= 5.1)
+    html2haml (2.2.0)
+      erubis (~> 2.7.0)
+      haml (>= 4.0, < 6)
+      nokogiri (>= 1.6.0)
+      ruby_parser (~> 3.5)
     http_parser.rb (0.6.0)
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
@@ -229,6 +244,8 @@ GEM
     rubocop-ast (1.11.0)
       parser (>= 3.0.1.1)
     ruby-progressbar (1.11.0)
+    ruby_parser (3.17.0)
+      sexp_processor (~> 4.15, >= 4.15.1)
     rubyzip (2.3.2)
     sass (3.7.4)
       sass-listen (~> 4.0.0)
@@ -246,6 +263,7 @@ GEM
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
+    sexp_processor (4.15.3)
     shellany (0.0.1)
     solargraph (0.43.0)
       backport (~> 1.2)
@@ -302,6 +320,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  annotate
   autoprefixer-rails
   bcrypt (~> 3.1.7)
   bootsnap (>= 1.4.4)
@@ -310,9 +329,8 @@ DEPENDENCIES
   capybara (>= 3.26)
   font-awesome-rails
   foundation-rails
-  guard (~> 2.18)
   guard-livereload (~> 2.5)
-  haml (~> 5.2, >= 5.2.2)
+  haml-rails (~> 2.0, >= 2.0.1)
   jquery-rails (~> 4.4)
   listen (~> 3.3)
   pg (~> 1.2, >= 1.2.3)
