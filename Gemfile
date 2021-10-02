@@ -47,6 +47,7 @@ group :development do
   gem 'rubocop'
   gem 'guard-livereload', '~> 2.5', require: false
   gem 'annotate'
+  gem 'better_errors', '~> 2.9', '>= 2.9.1'
 end
 
 group :test do
